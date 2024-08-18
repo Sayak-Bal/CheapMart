@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">
+      <i class="fa-solid fa-cart-shopping"></i><b>CheapMart</b>
+    
+      
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarScroll">
+      <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="/">Explore</a>
+        </li>
+      </ul>
+      <div class="d-flex ms-auto">
+        <form class="d-flex" role="search" action="/search" method="GET">
+          <input class="form-control me-2" type="search" name="title" placeholder="Search" aria-label="Search" required>
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </div>
+      <div class="navbar-nav ms-3">
+       
+      <div class="navbar-nav ms-3 d-flex align-items-center">
+        <% if (currUser) { %> 
+          <a class="nav-link" href="/listing/new">Sell</a>
+          <!-- If a user is logged in -->
+          <img src="https://previews.123rf.com/images/beatpavel/beatpavel1803/beatpavel180300006/97992262-javascript-coder-with-laptop.jpg" alt="Profile Image" class="rounded-circle me-2" style="width: 40px; height: 40px;">
+          <a class="nav-link" href="/logout"><b>LogOut</b></a>
+        <% } else { %>
+      
+          <a class="nav-link" href="/signup"><b>SignUp</b></a>
+          <a class="nav-link" href="/login"><b>Login</b></a>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,59 @@
+<% layout("/layouts/boilerplate") -%>
+  <body>
+    <div class="container mt-4">
+      <h3>Edit Your Listing</h3>
+      <form method="POST" action="/listing/<%= listing._id %>?_method=PUT" enctype="multipart/form-data">
+    
+        <div class="mb-3">
+          <label for="title" class="form-label">Title</label>  
+          <input name="listing[title]" value="<%= listing.title %>" type="text" class="form-control" id="title" />
+        </div>
+
+        <div class="mb-3">
+          <label for="description" class="form-label">Description</label>
+          <textarea name="listing[description]" class="form-control" id="description"><%= listing.description %></textarea>
+        </div>
+    
+        <div class="mb-3">
+          <p>Original listing image:</p>
+          <img src="<%= originalImageUrl %>" alt="Original listing image" class="img-fluid">
+        </div>
+        
+        <div class="mb-3">
+          <label for="image" class="form-label">Upload Image</label>
+          <input name="listing[image]" type="file" class="form-control" id="image" />
+          <div id="image-preview" class="mt-2"></div>
+        </div>
+
+        <div class="mb-3">
+          <label for="price" class="form-label">Price</label>
+          <input name="listing[price]" value="<%= listing.price %>" type="number" class="form-control" id="price" />
+        </div>
+
+        <div class="mb-3">
+          <label for="country" class="form-label">Country</label>
+          <input name="listing[country]" value="<%= listing.country %>" type="text" class="form-control" id="country" />
+        </div>
+
+        <div class="mb-3">
+          <label for="location" class="form-label">Location</label>
+          <input name="listing[location]" value="<%= listing.location %>" type="text" class="form-control" id="location" />
+        </div>
+
+        <button type="submit" class="btn btn-primary mb-4">Edit</button>
+      </form>
+    </div>
+
+    <script>
+      document.getElementById('image').addEventListener('change', function(event) {
+        const file = event.target.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = function(e) {
+            document.getElementById('image-preview').innerHTML = `<img src="${e.target.result}" alt="Selected image" class="img-fluid">`;
+          }
+          reader.readAsDataURL(file);
+        }
+      });
+    </script>
+  </body>
