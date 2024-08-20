@@ -28,7 +28,7 @@ module.exports.loginForm =(req,res)=>{
 //post login form 
 module.exports.login = async(req,res)=>{
     req.flash("success", "Welcome back Dakubaba World");
-    let redirectUrl = res.locals.redirectUrl || "/listing";
+    let redirectUrl = res.locals.redirectUrl || "/";
     res.redirect( redirectUrl );
 };
 // loggout
