@@ -1,167 +1,155 @@
 <% layout("/layouts/boilerplate") -%>
 
-<body>
-  <style>
-   #filters {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-   }
-   .filter {
-    text-align: center;
-    margin-right: 2rem;
-    margin-top: 2rem;
-    opacity: 0.7;
-   }
-   .filter:hover {
-    opacity: 1;
-    cursor: pointer;
-   }
-   .filter p {
-    font-size: 0.8rem;
-   }
-   .tax-info {
-    display: none;
-   }
-   .tax-toggle {
-    border: 1px black solid;
-    border-radius: 1rem;
-    height: 3.5rem;
-    padding: 1rem;
-    margin-left: 3rem;
-   }
-   /* public/styles.css */
-.loader {
-  border: 16px solid #f3f3f3;
-  border-radius: 50%;
-  border-top: 16px solid #3498db;
-  width: 120px;
-  height: 120px;
-  animation: spin 2s linear infinite;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 9999;
-}
+  <body>
+    <style>
+      #filters {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+      }
 
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
+      .filter {
+        text-align: center;
+        margin-right: 2rem;
+        margin-top: 2rem;
+        opacity: 0.7;
+      }
 
-.hidden {
-  display: none;
-}
-#offer{
-  background-color: red;
-  color: white;
-  
-}
-h6{
-  color:blue;
-}
-  </style>
+      .filter:hover {
+        opacity: 1;
+        cursor: pointer;
+      }
 
-  <!-- Include the navbar here with loader -->    
-  <div id="loader" class="loader"></div>
-  <div id="content" class="hidden"></div>
-  <div class="container mt-4">
-      <div id="filters">
-        <div class="filter">
-          <a href="/?description=Electronics" class="btn btn-outline-primary">
-            <div><i class="fa-solid fa-fire"></i></div>
-            <p>Electronics</p>
-          </a>
-          <a href="/?description=Clothing" class="btn btn-outline-primary">
-            <div><i class="fa-solid fa-shirt"></i></div>
-            <p>Clothing</p>
-          </a>
-        </div>
+      .filter p {
+        font-size: 0.8rem;
+      }
 
-   <!--     <div class="filter">
-          <a href="/?description=Clothing" class="btn btn-outline-primary">
-            <div><i class="fa-solid fa-shirt"></i></div>
-            <p>Clothing</p>
-          </a>
-        </div>-->   
-        
-        <!-- Add a filter for 'All' items -->
-        <div class="filter">
-          <a href="/?" class="btn btn-outline-primary">
-            <div><i class="fa-solid fa-list"></i></div>
-            <p>All</p>
-          </a>
-        </div>
+      .tax-info {
+        display: none;
+      }
 
-        <!-- Tax Toggle -->
-        <div class="tax-toggle">
-          <div class="form-check-reverse form-switch">
-            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-            <label class="form-check-label" for="flexSwitchCheckDefault">Display offers</label>
+      .tax-toggle {
+        border: 1px black solid;
+        border-radius: 1rem;
+        height: 3.5rem;
+        padding: 1rem;
+        margin-left: 3rem;
+      }
+
+      /* public/styles.css */
+   
+      #offer {
+        background-color: red;
+        color: white;
+
+      }
+
+      h6 {
+        color: blue;
+      }
+    </style>
+
+   
+      <div class="container mt-4">
+        <div id="filters">
+          <div class="filter">
+            <a href="/?description=Electronics" class="btn btn-outline-primary">
+              <div><i class="fa-solid fa-fire"></i></div>
+              <p>Electronics</p>
+            </a>
+            <a href="/?description=Clothing" class="btn btn-outline-primary">
+              <div><i class="fa-solid fa-shirt"></i></div>
+              <p>Clothing</p>
+            </a>
           </div>
-        </div> 
-      </div>
 
-      <h1>Today's Big Deals</h1>
-      <h6>see it ,love it ,grab it</h6>
-  </div><!-- Include the navbar here with loader -->  
+          <!--     <div class="filter">
+          <a href="/?description=Clothing" class="btn btn-outline-primary">
+            <div><i class="fa-solid fa-shirt"></i></div>
+            <p>Clothing</p>
+          </a>
+        </div>-->
 
-      
-        <!--loader Your listings content -->
-      
+          <!-- Add a filter for 'All' items -->
+          <div class="filter">
+            <a href="/?" class="btn btn-outline-primary">
+              <div><i class="fa-solid fa-list"></i></div>
+              <p>All</p>
+            </a>
+          </div>
+
+          <!-- Tax Toggle -->
+          <div class="tax-toggle">
+            <div class="form-check-reverse form-switch">
+              <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+              <label class="form-check-label" for="flexSwitchCheckDefault">Display offers</label>
+            </div>
+          </div>
+        </div>
+
+        <h1>Today's Big Deals</h1>
+        <h6>see it ,love it ,grab it</h6>
+      </div><!-- Include the navbar here with loader -->
+
+
+      <!--loader Your listings content -->
+
       <!-- Listing items -->
       <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
-       
-            <% for (datas of data) { %>
-        <a href="/listing/<%= datas._id %>">
-        
+
+        <% for (datas of data) { %>
+          <a href="/listing/<%= datas._id %>">
+
             <div class="card col">
-              <img src="<%= datas.image.url %>" class="card-img-top" alt="listing_img" style="height:20rem"/>
+              <img src="<%= datas.image.url %>" class="card-img-top" alt="listing_img" style="height:20rem" />
               <div class="card-img-overlay"></div>
               <div class="card-body">
                 <p class="card-text">
-                  <b><%= datas.title %></b> <br/>
+                  <b>
+                    <%= datas.title %>
+                  </b> <br />
                   <b>&#8377;<%= datas.price ? datas.price.toLocaleString('en-IN') : 'Price not available' %></b>
                   <i class="tax-info">&nbsp;<b><span id="offer"> 10% off </span></b></i>
                 </p>
               </div>
             </div>
           </a>
-        <% } %>   
+          <% } %>
       </div>
     </div>
 
-      <!-- Pagination -->
-      <nav aria-label="Page navigation" class="mt-4">
-        <ul class="pagination justify-content-center">
-            <% if (currentPage > 1) { %>
-                <li class="page-item">
-                  <a class="page-link" href="/?page=<%= currentPage - 1 %>&description=<%= description %>">Previous</a>
-                </li>
-            <% } %>
-            <% for (let i = 1; i <= totalPages; i++) { %>
-                <li class="page-item <%= i === currentPage ? 'active' : '' %>">
-                    <a class="page-link" href="/?page=<%= i %>&description=<%= description %>"><%= i %></a>
-                </li>
-            <% } %>
-            <% if (currentPage < totalPages) { %>
-                <li class="page-item">
-                  <a class="page-link" href="/?page=<%= currentPage + 1 %>&description=<%= description %>">Next</a>
-                </li>
-            <% } %>
-        </ul>
-      </nav>
-</div>   
+    <!-- Pagination -->
+    <nav aria-label="Page navigation" class="mt-4">
+      <ul class="pagination justify-content-center">
+        <% if (currentPage> 1) { %>
+          <li class="page-item">
+            <a class="page-link" href="/?page=<%= currentPage - 1 %>&description=<%= description %>">Previous</a>
+          </li>
+          <% } %>
+            <% for (let i=1; i <=totalPages; i++) { %>
+              <li class="page-item <%= i === currentPage ? 'active' : '' %>">
+                <a class="page-link" href="/?page=<%= i %>&description=<%= description %>">
+                  <%= i %>
+                </a>
+              </li>
+              <% } %>
+                <% if (currentPage < totalPages) { %>
+                  <li class="page-item">
+                    <a class="page-link" href="/?page=<%= currentPage + 1 %>&description=<%= description %>">Next</a>
+                  </li>
+                  <% } %>
+      </ul>
+    </nav>
+    </div>
   
-</body>  
-<!-- views/listing/index.ejs -->
+  </body>
+  <!-- views/listing/index.ejs -->
 
-    
-    <!-- Your content here -->
-  
 
- 
+  <!-- Your content here -->
+
+
+
 
   <script>
     let taxSwitch = document.getElementById("flexSwitchCheckDefault");
@@ -177,12 +165,8 @@ h6{
     });
 
 
-      // Show loader on page load
-      window.addEventListener('load', function () {
-            // Hide the loader and show the content after a short delay
-            document.getElementById('loader').style.display = 'none';
-            document.getElementById('content').classList.remove('hidden');
-        });
-  </script>         
+    // Show loader on page load
     
-</body>
+  </script>
+
+  </body>

@@ -35,14 +35,18 @@ body{
     font-size:1.2rem;
     margin-right:2rem;
 }
+footer {
+    margin-top:auto;
+}
 .f-info{
+    width:100%;
     text-align: center;
     background-color: grey;
     display:flex;
     justify-content: center;
     height:8rem;
     flex-wrap:wrap;
-    align-items: space-evenly;
+    
 }
 
 /*card*/
