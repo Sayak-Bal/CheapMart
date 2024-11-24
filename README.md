@@ -1,3 +1,3 @@
 # cheapMart
 visit us
-https://sayak-bal.github.io/CheapMart/
+https://cheapmart.onrender.com
